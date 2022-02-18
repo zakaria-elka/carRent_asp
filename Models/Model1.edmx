@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Database1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="email" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="pas" Type="char" MaxLength="60" Nullable="false" />
+          <Property Name="cin" Type="image" />
+          <Property Name="Dlicense" Type="image" />
+          <Property Name="birthday" Type="date" />
+          <Property Name="tel" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Car">
+          <Key>
+            <PropertyRef Name="Rnum" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="categories" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="brand" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="price" Type="int" Nullable="false" />
+          <Property Name="Rnum" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="reserve" Type="bit" Nullable="false" />
+          <Property Name="image" Type="image" />
+          <Property Name="cdate" Type="date" Nullable="false" />
+          <Property Name="carburant" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="models" Type="nchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="resrvation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="car name " Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="car number plate " Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="person name" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="person email" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="long time" Type="bit" Nullable="false" />
+          <Property Name="start date" Type="datetime" Nullable="false" />
+          <Property Name="finish date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="Database1ModelStoreContainer">
+          <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Car" EntityType="Self.Car" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="resrvation" EntityType="Self.resrvation" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Database1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="email" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="pas" Type="String" MaxLength="60" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="cin" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Dlicense" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="birthday" Type="DateTime" Precision="0" />
+          <Property Name="tel" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="Database1Entities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Accounts" EntityType="Self.Account" />
+          <EntitySet Name="Cars" EntityType="Database1Model.Car" />
+          <EntitySet Name="resrvations" EntityType="Database1Model.resrvation" />
+        </EntityContainer>
+        <EntityType Name="Car">
+          <Key>
+            <PropertyRef Name="Rnum" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="categories" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="brand" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="price" Type="Int32" Nullable="false" />
+          <Property Name="Rnum" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="cdate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="carburant" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="reserve" Type="Boolean" Nullable="false" />
+          <Property Name="models" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="resrvation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="car_name_" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="car_number_plate_" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="person_name" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="person_email" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="long_time" Type="Boolean" Nullable="false" />
+          <Property Name="start_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="finish_date" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Database1ModelStoreContainer" CdmEntityContainer="Database1Entities1">
+          <EntitySetMapping Name="Accounts">
+            <EntityTypeMapping TypeName="Database1Model.Account">
+              <MappingFragment StoreEntitySet="Account">
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="pas" ColumnName="pas" />
+                <ScalarProperty Name="cin" ColumnName="cin" />
+                <ScalarProperty Name="Dlicense" ColumnName="Dlicense" />
+                <ScalarProperty Name="birthday" ColumnName="birthday" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cars">
+            <EntityTypeMapping TypeName="Database1Model.Car">
+              <MappingFragment StoreEntitySet="Car">
+                <ScalarProperty Name="models" ColumnName="models" />
+                <ScalarProperty Name="reserve" ColumnName="reserve" />
+                <ScalarProperty Name="carburant" ColumnName="carburant" />
+                <ScalarProperty Name="cdate" ColumnName="cdate" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="Rnum" ColumnName="Rnum" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="brand" ColumnName="brand" />
+                <ScalarProperty Name="categories" ColumnName="categories" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="resrvations">
+            <EntityTypeMapping TypeName="Database1Model.resrvation">
+              <MappingFragment StoreEntitySet="resrvation">
+                <ScalarProperty Name="finish_date" ColumnName="finish date" />
+                <ScalarProperty Name="start_date" ColumnName="start date" />
+                <ScalarProperty Name="long_time" ColumnName="long time" />
+                <ScalarProperty Name="person_email" ColumnName="person email" />
+                <ScalarProperty Name="person_name" ColumnName="person name" />
+                <ScalarProperty Name="car_number_plate_" ColumnName="car number plate " />
+                <ScalarProperty Name="car_name_" ColumnName="car name " />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
