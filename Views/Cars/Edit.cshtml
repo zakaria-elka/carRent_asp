@@ -1,0 +1,157 @@
+﻿@model WebApplication.Models.Car
+
+@Styles.Render("~/Content/css")
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+
+
+    @using (Html.BeginForm("Edit", "Cars", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Car</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Rnum)
+        @Html.HiddenFor(model => model.image)
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Id, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Id, new
+                {
+                    htmlAttributes = new
+                    {
+                        @class = "form-control"
+           ,
+               @style = "pointer-events:none; "
+           }
+           })
+                <p style="color:red">can not be change</p>
+                @Html.ValidationMessageFor(model => model.Id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.brand, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.brand, new
+                {
+                    htmlAttributes = new
+                    {
+                        @class = "form-control"
+           ,
+               @style = "pointer-events:none; "
+           }
+           })
+                <p style="color:red">can not be change</p>
+                @Html.ValidationMessageFor(model => model.brand, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.models, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+
+                @Html.EditorFor(model => model.models, new
+                {
+                    htmlAttributes = new
+                    {
+                        @class = "form-control"
+           ,
+               @style = "pointer-events:none; "
+           }
+           })
+                <p style="color:red">can not be change</p>
+                @Html.ValidationMessageFor(model => model.models, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.carburant, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.carburant, new
+                {
+                    htmlAttributes = new
+                    {
+                        @class = "form-control"
+           ,
+               @style = "pointer-events:none; "
+           }
+           })
+                <p style="color:red">can not be change</p>
+                @Html.ValidationMessageFor(model => model.carburant, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.categories, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.categories,
+               new { htmlAttributes = new { @class = "form-control", @style = "pointer-events:none; " } })
+                <p style="color:red">can not be change</p>
+                @Html.ValidationMessageFor(model => model.categories, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.cdate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.cdate,
+               new { htmlAttributes = new { @class = "form-control", @style = "pointer-events:none; " } })
+                <p style="color:red">can not be change</p>
+                @Html.ValidationMessageFor(model => model.cdate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.price, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.price, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.price, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        
+
+
+        <div class="form-group">
+            @Html.Label("Reservation", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.reserve, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.reserve, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+    }
+
+    
+        @Html.ActionLink("Back to List", "Index",new object { },new {@class="btn btn-info"})
+   
+</body>
+</html>

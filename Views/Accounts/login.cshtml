@@ -1,0 +1,67 @@
+﻿@model WebApplication.Models.Account
+
+@Styles.Render("~/Content/login.css")
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>login</title>
+</head>
+<body>
+
+
+    @Html.ActionLink("Go Back", "Index", "Home", new object { },
+new
+  {
+      @style = "position:absolute; top:20px; left:20px; text-decoration:none; color:white;" +
+" font-size:20px; "
+  })
+
+    
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+
+  
+    <div class="main">
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="login">
+                <form method="post">
+                    <label for="chk" aria-hidden="true">Login</label>
+                    <input type="email" name="email" placeholder="Email" required="">
+                    <input type="password" name="pas" placeholder="Password" required="">
+                    @ViewBag.message
+                    <input type="submit" name="login" value="login" class="button" />
+                </form>
+            </div>
+
+        }
+        @using (Html.BeginForm())
+        {<input type="checkbox" id="chk" aria-hidden="true">
+            @Html.AntiForgeryToken()
+
+    <div class="signup">
+        <form method="post">
+            <label for="chk" aria-hidden="true">Sign up</label>
+            <input type="text" name="name" placeholder="Full name" required="">
+            <input type="email" name="email" placeholder="Email" required="">
+            <input type="password" name="pas" placeholder="Password" required="">
+            <input type="submit" name="signup" value="sign up" class="button" />
+        </form>
+        @ViewBag.message
+    </div>
+
+        }
+
+    </div>
+
+       
+
+</body>
+</html>

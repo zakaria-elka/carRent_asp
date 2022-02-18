@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+@Styles.Render("~/Content/css")
+
+
+    @Html.ActionLink("Go Back", "Index", "Home", new object { }, new { @class = "btn btn-info" })
+    <center style="margin-top:5%; border:1px solid black; padding:10px; ">
+        <h2>To Contact Us</h2>
+
+
+        <address>
+            Casablanca<br />
+            Maarif, 20068<br />
+            <abbr title="Phone">P:</abbr>
+            446.081.01
+        </address>
+        <br /><br />
+        <address>
+            <strong>Support:</strong>   <a href="mailto:Support@example.com">Car.Rental_MO@example.com</a><br />
+
+        </address>
+    </center>

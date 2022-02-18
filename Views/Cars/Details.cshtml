@@ -1,0 +1,98 @@
+﻿@model WebApplication.Models.Car
+
+@Styles.Render("~/Content/css")
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+   @{  var img =  Model.image;
+       var base64 = Convert.ToBase64String(img);
+       var imgSrc = String.Format("data:image/gif;base64,{0}", base64); }
+    <div>
+        <h4>CAR</h4>
+        <hr />
+        <table class="table">
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    categories
+                </th>
+                <th>
+                    brand
+                </th>
+                <th>
+                    Model
+                </th>
+                <th>
+                    Car number plate
+                </th>
+                <th>
+                    Price
+                </th>
+                <th>
+                    Circulation date
+                </th>
+                <th>
+                    Image
+                </th>
+                <th>
+                    Carburant
+                </th>
+                <th>
+                    Reserved
+                </th>
+
+            <tr class="danger">
+                <td>
+                    @Html.DisplayFor(model => model.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.categories)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.brand)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.models)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Rnum)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.price)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.cdate)
+                </td>
+                <td>
+                    <img src="@imgSrc" height="150" width="200" />
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.carburant)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.reserve)
+                </td>
+
+
+
+            </tr>
+       
+
+        </table>
+
+    </div>
+    <br /><br />
+    <center>
+        @Html.ActionLink("Edit", "Edit", new { Rnum = Model.Rnum }) |
+        @Html.ActionLink("Back to List", "Index")
+    </center>
+</body>
+</html>

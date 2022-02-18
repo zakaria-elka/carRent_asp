@@ -1,0 +1,96 @@
+﻿@model WebApplication.Models.Account
+
+@Styles.Render("~/Content/css")
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+   
+    <div>
+        <h4>Account</h4>
+        <hr />
+        <table class="table table-hover">
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.name)
+                </th>
+                <th>
+                    Phone
+                </th>
+                <th>
+                    Birthday
+                </th>
+                <th>
+                    CIN
+                </th>
+                <th>
+                    Driving license
+                </th>
+
+            <tr class="danger">
+                <td>
+                    @Html.DisplayFor(model => model.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.email)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.tel)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.birthday)
+                </td>
+                @{
+
+                   
+                    if (Model.cin != null)
+                    {
+                        var img1Src = String.Format("data:image/gif;base64,{0}", Convert.ToBase64String(Model.cin));
+                        var img2Src = String.Format("data:image/gif;base64,{0}", Convert.ToBase64String(Model.Dlicense));
+
+                        <td>
+
+                            <img src="@img1Src" height="150" width="200" />
+
+                        </td>
+                        <td>
+
+                            <img src="@img2Src" height="150" width="200" />
+
+
+
+                        </td>
+
+                    }
+                }
+
+
+
+
+            </tr>
+
+
+        </table>
+
+    </div>
+    <br /><br />
+          <center>
+              @Html.ActionLink("Reservation admin", "Index", "resrvations", new object { }, new { @class = "btn btn-info" })
+              @Html.ActionLink("ACCOUNTS ADMIN SPACE", "Index", new object { }, new { @class = "btn btn-primary" })
+
+          </center>
+</body>
+</html>

@@ -1,0 +1,73 @@
+﻿@model WebApplication.Models.resrvation
+
+@Styles.Render("~/Content/css")
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Reservation</h4>
+        <hr />
+        
+        <table class="table table-striped">
+            <tr>
+                  <th> @Html.DisplayNameFor(model => model.car_name_)</th>
+                  <th>       @Html.DisplayNameFor(model => model.car_number_plate_)</th>
+                  <th>    @Html.DisplayNameFor(model => model.person_name)</th>
+                  <th>        @Html.DisplayNameFor(model => model.person_email) </th>
+                  <th>
+                      @Html.DisplayNameFor(model => model.long_time)
+                  </th>
+                  <th>   @Html.DisplayNameFor(model => model.start_date)</th>
+                  <th>   @Html.DisplayNameFor(model => model.finish_date)</th>
+              </tr>
+              <tr>
+                  <td>
+                      @Html.DisplayFor(model => model.car_name_)
+                  </td>
+
+                  <td>
+                      @Html.DisplayFor(model => model.car_number_plate_)
+                  </td>
+
+
+
+                  <td>
+                      @Html.DisplayFor(model => model.person_name)
+                  </td>
+
+                  <td>
+                      @Html.DisplayFor(model => model.person_email)
+                  </td>
+
+                  <td>
+                      @Html.DisplayFor(model => model.long_time)
+                  </td>
+
+
+                  <td>
+                      @Html.DisplayFor(model => model.start_date)
+                  </td>
+
+
+                  <td>
+                      @Html.DisplayFor(model => model.finish_date)
+                  </td>
+
+           
+        </table>
+    </div>
+    <center>
+     @Html.ActionLink("Show Person_name Info", "Details","Accounts", 
+    new { email = Model.person_email },
+      new { @class = "btn btn-Danger" })
+        @Html.ActionLink("Back to List", "Index", new object { },
+       new { @class = "btn btn-info" })
+    </center>
+</body>
+</html>

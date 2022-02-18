@@ -1,0 +1,66 @@
+﻿@model IEnumerable<WebApplication.Models.resrvation>
+
+@Styles.Render("~/Content/css")
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <h2>Resrvation Admin space </h2>
+    <br />
+    <table class="table table-bordered">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.car_name_)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.car_number_plate_)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.person_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.person_email)
+            </th>
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.car_name_)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.car_number_plate_)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.person_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.person_email)
+                </td>
+
+
+                <td>
+
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-success" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+
+    </table>
+    <center>
+        @Html.ActionLink("Account admin", "Index", "Accounts", new object { }, new { @class = "btn btn-info" })
+        @Html.ActionLink("CAR ADMIN SPACE", "Index", "Cars", new object { }, new { @class = "btn btn-primary" })
+        @Html.ActionLink("Go home page", "Index", "Home", new object { }, new { @class = "btn btn-danger" })
+    </center>
+
+</body>
+</html>

@@ -1,0 +1,123 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@Styles.Render("~/Content/css")
+
+
+<div class="homeapp">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+
+            <div class="navbar-header">
+
+                <a class="navbar-brand">CarRent</a>
+            </div>
+
+
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav ">
+
+                    <li style="padding-left:35%;">
+                        @Html.ActionLink("Contact", "Contact", "Home")
+                    </li>
+                    @if (Session["user"] != null)
+                    {
+                        <li style="position:absolute; right:75px; ">
+                            <a href="" style="pointer-events:none; color:darkslategray;">@Session["user"] / </a>
+
+
+                        </li>
+                        @Html.ActionLink("log out", "login", "Accounts", new object { },
+          new { @style = "position:absolute; right:20px; top:10px; font-size:10px;", @class = "btn btn-info" })
+                    }
+
+                </ul>
+
+
+
+
+
+            </div>
+        </div>
+    </nav>
+
+
+
+    <div class="text">
+        <h2>
+            Want To Rent A Car
+
+        </h2>
+        <h5>We	&nbsp;&nbsp;Have	&nbsp;	&nbsp;A   	&nbsp;	&nbsp;Best	&nbsp;	&nbsp;   Price.</h5>
+       
+    </div>
+    <div class="btn1">
+
+        @if (Session["user"] == null)
+        {
+            @Html.ActionLink("login", "login", "Accounts", new object { },
+           new { @style = "text-decoration:none; color:white;", @class = "btn btn-success" })
+
+
+
+            @Html.ActionLink("Visitor", "Cardisplay", "Cars", new object { },
+           new { @style = "text-decoration:none; color:white;  ", @class = "btn btn-warning" })
+
+        }
+        else
+        {
+            @Html.ActionLink("Show Car", "Cardisplay", "Cars", new object { },
+          new { @style = "text-decoration:none; color:white; margin-left:200px; ", @class = "btn btn-warning" })
+        }
+
+    </div>
+
+
+
+
+
+</div>
+<div class="display">
+
+    <table class="table ">
+       
+        <tr>
+
+            <td>
+                <div class="thumbnail">
+
+                    <h3>MAINTENANCE</h3>
+                    <br />
+                    <p>
+                        You don't have to worry about it anymore!
+                        <br />We take care of everything:<br />
+                        Brake pad change, oil change, tire change ...
+                    </p>
+                </div>
+            </td>
+            <td>
+                <div class="thumbnail">
+                    <h3>FACILITIES</h3>
+                    <br />
+                    <p>
+
+                        We Have different type of Payment<br />
+                        Some Special Offers
+
+                    </p>
+
+                </div>
+            </td>
+            <td>
+                <div class="thumbnail">
+                    <h3>ASSISTANCE</h3>
+                    <br />
+                    <p>In the event of an accident or breakdown,<br /> you have rapid support</p>
+                </div>
+            </td>
+        </tr>
+
+    </table>
+</div>
+

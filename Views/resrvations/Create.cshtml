@@ -1,0 +1,138 @@
+﻿@model WebApplication.Models.resrvation
+
+@Styles.Render("~/Content/css")
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+
+
+    <center>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4>Finish Your Reservation</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.Label("Car Name", htmlAttributes: new { @class = "control-label col-md-5" })
+                <div class="col-md-2">
+                    @Html.EditorFor(model => model.car_name_, new
+               {
+                   htmlAttributes = new
+                   {
+                       @class = "form-control",
+                       @style = "pointer-events:none; ",
+                       @Value = "" + TempData["CarName"],
+
+                   }
+               })
+                    @Html.ValidationMessageFor(model => model.car_name_, "", new { @class = "text-danger" })
+                    <p style="color:red">can not be change</p>
+                </div>
+
+            </div>
+
+                <div class="form-group">
+                    @Html.Label("Car Number Plate", htmlAttributes: new { @class = "control-label col-md-5" })
+                    <div class="col-md-2">
+                        @Html.EditorFor(model => model.car_number_plate_, new
+                   {
+                       htmlAttributes = new
+                       {
+                           @class = "form-control"
+                   ,
+                           @style = "pointer-events:none; ",
+                           @Value = "" + TempData["CarNumber"],
+                       }
+                   })
+                        @Html.ValidationMessageFor(model => model.car_number_plate_, "", new { @class = "text-danger" })
+                        <p style="color:red">can not be change</p>
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("User Name", htmlAttributes: new { @class = "control-label col-md-5" })
+
+                    <div class="col-md-2">
+                        @Html.EditorFor(model => model.person_name, new
+                   {
+                       htmlAttributes = new
+                       {
+                           @class = "form-control",
+                           @style = "pointer-events:none; ",
+                           @Value = "" + Session["user"],
+                       }
+                   })
+                        @Html.ValidationMessageFor(model => model.person_name, "", new { @class = "text-danger" })
+                        <p style="color:red">can not be change</p>
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("User Email", htmlAttributes: new { @class = "control-label col-md-5" })
+                    <div class="col-md-2">
+                        @Html.EditorFor(model => model.person_email, new
+                   {
+                       htmlAttributes = new
+                       {
+                           @class = "form-control",
+                           @style = "pointer-events:none; ",
+                           @Value = "" + Session["UserEmail"],
+                       }
+                   })
+                        @Html.ValidationMessageFor(model => model.person_email, "", new { @class = "text-danger" })
+                        <p style="color:red">can not be change</p>
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("Longue Duration?", htmlAttributes: new { @class = "control-label col-md-5" })
+                    <div class="col-md-2">
+                        <div class="checkbox">
+                            @Html.EditorFor(model => model.long_time)
+                            @Html.ValidationMessageFor(model => model.long_time, "", new { @class = "text-danger"})
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("Start date", htmlAttributes: new { @class = "control-label col-md-5" })
+                    <div class="col-md-2">
+                        @Html.EditorFor(model => model.start_date, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                        @Html.ValidationMessageFor(model => model.start_date, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("Finish date", htmlAttributes: new { @class = "control-label col-md-5" })
+                    <div class="col-md-2">
+                        @Html.EditorFor(model => model.finish_date, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                        @Html.ValidationMessageFor(model => model.finish_date, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-5 col-md-2">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }
+
+    </center>
+
+</body>
+</html>

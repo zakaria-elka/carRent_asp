@@ -1,0 +1,73 @@
+﻿@model IEnumerable<WebApplication.Models.Account>
+
+@Styles.Render("~/Content/css")
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <h2> Accounts Admin Space </h2>
+
+    <br />
+    <table class="table table-striped">
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th>
+                Phone
+            </th>
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.email)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.tel)
+                </td>
+
+                <td>
+
+
+                    @Html.ActionLink("Details", "Details", new { email = item.email },
+                   new { @class = "btn btn-primary" })
+                    |
+
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id, email = item.email },
+                    new { @class = "btn btn-danger" })
+
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <center>
+        @Html.ActionLink("Reservation admin", "Index", "resrvations", new object { }, new { @class = "btn btn-info" })
+        @Html.ActionLink("CAR ADMIN SPACE", "Index", "Cars", new object { }, new { @class = "btn btn-primary" })
+        @Html.ActionLink("Go home page", "Index", "Home", new object { }, new { @class = "btn btn-danger" })
+        
+
+    </center>
+</body>
+</html>

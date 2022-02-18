@@ -1,0 +1,183 @@
+﻿@model IEnumerable<WebApplication.Models.Car>
+
+
+@Styles.Render("~/Content/cardisplay.css")
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CarDisplay</title>
+    <link href="https://cdn.lineicons.com/2.0/LineIcons.css" rel="stylesheet">
+
+</head>
+
+
+
+<body>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <nav class="nav">
+        <div class="title">
+            @Html.ActionLink("CarRent", "index", "Home", new object { },
+new { @style = "text-decoration:none; color:white; font-size:20px" })
+
+            @if (Session["user"] != null)
+            {
+
+                string user = Session["user"].ToString().Replace(" ", "");
+                if (String.Compare("admin1", user) == 0 || String.Compare("admin2", user) == 0)
+                {
+                    @Html.ActionLink("AdminSpace", "Index", "Accounts", new object { },
+      new { @style = "position:absolute; left:200px; top:25px; font-size:15px; color:darkgreen; text-decoration:none;" })
+
+                }
+
+                <a href="" style="pointer-events:none; color:darkslategray; font-size:15px; padding-left:88%; text-decoration:none;">
+
+                    @Session["user"]
+
+                </a>
+                @Html.ActionLink("log out", "login", "Accounts", new object { },
+      new { @style = "position:absolute; right:36px; top:7px; font-size:15px; color:white; text-decoration:none;" })
+
+
+
+            }
+            else
+            {
+
+                <script type='text/javascript'>
+                    alert("Login to reserve car ");</script>
+
+                @Html.ActionLink("Login", "Login", "Accounts", new object { },
+              new { @style = "text-decoration:none; color:darkslategray; font-size:15px; padding-left:90%;" })
+            }
+        </div>
+
+    </nav>
+
+
+
+    <div class="cardisplay">
+        <div>
+            <ul>
+
+                <li><a class="active">@DateTime.Now.ToString("yyyy-MM-dd")</a></li>
+                <br />
+                <li>
+                    <a href="#">
+                        <i style="        padding-left: 45%;
+        font-size: 35px;
+        color: rgb(51 49 255);" class="lni lni-facebook-oval"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i style="padding-left: 45%; font-size: 35px; color:rgb(0, 171, 250)"
+                           class="lni lni-twitter-original"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i style="padding-left: 45%; font-size: 35px; color:brown" class="lni lni-instagram-filled"></i>
+                    </a>
+                </li>
+                <li>
+
+
+
+                </li>
+                <li id="message" style="padding-left:5px; padding-top:50px; height:200px;">
+                    <label for="story">Messages</label>
+
+                    <textarea id="story" name="story"
+                              rows="5" cols="33">~Our Agent are Available To give Help.
+
+~After reserve Our Agent Will Contact you.
+
+~Call +21244608101 for additional information.
+                       </textarea>
+
+                </li>
+            </ul>
+        </div>
+
+
+        <div>
+
+            @foreach (var item in Model)
+            {
+                if (item.reserve == false)
+                {
+
+                    var img = String.Format("data:image/gif;base64,{0}", Convert.ToBase64String(item.image));
+                    string CarName = item.brand;
+                    CarName = CarName.Insert(10, "_");
+                    CarName = CarName.Insert(11, item.models);
+                    CarName = CarName.Replace(" ", "");
+                    <div class="showcar">
+
+                        <img src="@img" style="border-radius:10px 0  0 10px;" height="190" width="180" />
+                        <div class="infocar">
+                            <h2>@item.brand&nbsp;@item.models</h2>
+                            <dl>
+
+                                <dt>Categorie</dt>
+                                <dd>@item.categories</dd>
+
+                                <dt>Carburant</dt>
+                                <dd>@item.carburant</dd>
+
+                                <dt>Price</dt>
+                                <dd>@item.price$</dd>
+                            </dl>
+
+                        </div>
+
+                        <div class="send">
+                            @using (Html.BeginForm())
+                            {
+
+
+                                @Html.AntiForgeryToken()
+                                if (Session["user"] != null)
+                                {
+                                    <input type="hidden" value="@item.Rnum" readonly="readonly" name="num" onmouseover="dis(this)" />
+                                    <input type="hidden" value="@CarName" readonly="readonly" name="name" onmouseover="dis(this)" />
+
+                                    <input type="submit" value="reserve" class="btn" />
+
+                                }
+
+                            }
+
+                        </div>
+                    </div>
+                    if (ViewBag.message != null)
+                    {
+                        <script type="text/javascript">
+
+            window.onload = function () {
+                alert("@ViewBag.message");
+            };
+                        </script>
+
+                    }
+                }
+            }
+        </div>
+
+
+
+    </div>
+    <script type="text/javascript">
+        function dis(x) {
+            x.disabled = true;
+        }
+        
+
+    </script>
+</body>
+</html>
