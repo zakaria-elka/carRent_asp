@@ -1,0 +1,168 @@
+﻿body {
+ 
+}
+
+ul {
+    position: fixed;
+    list-style-type: none;
+    right: 0;
+    top: 60px;
+    margin: 0;
+    padding: 0;
+    width: 350px;
+    height: 100%;
+    background-color: #f1f1f1;
+}
+
+li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+    li a.active {
+        background-color: #04AA6D;
+        color: white;
+    }
+
+    li a:hover:not(.active) {
+        background-color: #555;
+        color: white;
+    }
+
+
+@media only screen and (max-width: 1350px) {
+    ul {
+        position: fixed;
+        display:inline-flex;
+        top: 0;
+        height: 10px;
+        z-index: 999;
+        background-color:black;
+    }
+
+   
+    .cardisplay {
+        position: absolute;
+        top: 90px;
+        left: 40%;
+    }
+
+    #message{
+
+        display:none;
+
+    }
+
+
+}
+
+
+
+
+
+
+
+
+.cardisplay{
+    position:absolute;
+    top:90px;
+    left:5px; 
+
+
+}
+
+
+.nav {
+    position: fixed;
+    background-color: black;
+    z-index:999;
+    height: 60px;
+    top: 0;
+    left:0;
+    right:0;
+}
+
+.nav .title{
+    padding-top:20px;
+    padding-left:20px;
+
+}
+
+
+.showcar {
+    display: inline-flex;
+    width: 450px;
+    height: 190px;
+    background-color: #f7f9f9;
+    margin-bottom: 20px;
+    margin-left: 30px;
+    -webkit-box-shadow: 0px 0px 30px 3px rgba(172,172,172,0.6);
+    box-shadow: 0px 0px 30px 3px rgba(172,172,172,0.6);
+    -webkit-border-radius: 15px;
+    border-radius: 15px;
+}
+
+.showcar .infocar {
+    width: 50%;
+}
+    .showcar h2 {
+        color: darkslategray;
+        margin-top: 2px;
+        padding-left: 20px;
+     
+    }
+
+    .showcar dt {
+        margin-top: 15px;
+        padding-left: 20px;
+        color: #196f3d;
+        font-weight: bold;
+    }
+
+    .showcar dl,
+    dd {
+      
+        font-size: .9rem;
+    }
+
+.showcar dd {
+    margin-bottom: 1em;
+}
+
+
+    .showcar  .btn {
+        background-color: #5dade2;
+        color: white;
+        height: 190px;
+        -webkit-border-radius: 0 15px 15px 0;
+        border-radius: 0 15px 15px 0;
+    }
+
+
+
+
+label,
+textarea {
+    font-size: .8rem;
+    letter-spacing: 1px;
+}
+
+textarea {
+    height:200px;
+    padding: 10px;
+    max-width: 100%;
+    line-height: 1.5;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px #999;
+    resize: none;
+    pointer-events:none;
+}
+
+    
+label {
+    display: block;
+    margin-bottom: 10px;
+}
